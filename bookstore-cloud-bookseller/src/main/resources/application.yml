@@ -1,0 +1,37 @@
+
+
+spring:
+  messages:
+    basename: messages
+    encoding: utf-8
+  jpa:
+    show-sql: true
+  application:
+    name: bookstore-cloud-bookseller
+
+com:
+  excel:
+    common:
+      pagination:
+        limit: 10
+        order: asc
+    pool:
+      poolName: testpool
+      capacity: 100
+      minSize: 5
+      maxSize: 20
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.excel.bookstore.model
+  configuration:
+    map-underscore-to-camel-case: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://BSS1:9001/eureka/,http://BSS2:9002/eureka/
+server:
+  port: 8080

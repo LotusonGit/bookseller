@@ -1,0 +1,8 @@
+/*! Bootstrap Core CSS */
+@import url("/plugins/bootstrap/css/bootstrap.min.css");
+@import url("/plugins/metisMenu/css/metisMenu.min.css");
+@import url("/plugins/custom/css/custom.min.css");
+@import url("/plugins/font-awesome/css/font-awesome.min.css");
+@import url("/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css");
+@import url("/plugins/bootstrap-table/css/bootstrap-table.min.css");
+@import url("/plugins/bootstrap-select/css/bootstrap-select.css");

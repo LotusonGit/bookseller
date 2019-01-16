@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=10"/>
+    <title>input Customer Info.</title>
+    <link href="${ctxPath}/css/import-all.css" rel="stylesheet" type="text/css"/>
+    <%include("/inc/alljs.html"){}%>
+    <script type="text/javascript">
+        $(function () {
+
+
+            //重置
+            $('#btn_reset').click(function () {
+                /* $("#CUST_CERT_CAT").ligerGetComboBoxManager().selectValue(""); */
+                /* $("#CUST_CIF_CODE").val("");
+                $("#CUST_CIF_NAME").val(""); */
+            });
+            //客户类型下拉框
+
+            $("#customerType").selectpicker({
+                noneSelectedText: '<%i18n("droplist.default");%>'
+            });
+            //客户类型下拉数据加载
+            var custTypeDataArr = [{"text": '', 'value': ''}, {
+                "text": '个人客户',
+                'value': 'individualClient'
+            }, {"text": '机构客户', 'value': 'institutionClient'}];
+            setSelectData('customerType', custTypeDataArr);
+            $("#customerType").change(function () {
+                $("#customerType option:selected").each(function () {
+                });
+            });
+        });
+
+        function displaySearchList() {
+            if ($("#searchList").css("display") == "none") {
+                $("#searchList").css("display", "");
+                $("#searchListButton").text("-");
+            } else {
+                $("#searchList").css("display", "none");
+                $("#searchListButton").text("+");
+            }
+        }
+
+        function individClientAddButton() {
+            //var url = '/individClient!create.do?createType=add';
+            //window.location.href =url;
+        }
+
+        function individClientModButton() {
+            $.ajax({
+                url: '/cif/client',
+                method: 'put',
+                data: {custOid: 100000},
+                async: false,
+                dataType: 'json',
+                success: function (rMsg) {
+                    if (typeof(rMsg) == "string") {
+                        var re = $.parseJSON(rMsg);
+                    } else {
+                        var re = rMsg;
+                    }
+                    alert(re.data);
+                },
+                error: function (m) {
+                    for (var p in m) {
+                        alert("error[" + p + "]=" + m[p]);
+                    }
+                    //alert("Error:"+m);
+                }
+            });
+        }
+
+        function individClientGetButton() {
+            $.ajax({
+                url: '/cif/client',
+                method: 'get',
+                data: {custOid: 100000},
+                async: false,
+                dataType: 'json',
+                success: function (rMsg) {
+                    if (typeof(rMsg) == "string") {
+                        var re = $.parseJSON(rMsg);
+                    } else {
+                        var re = rMsg;
+                    }
+                    alert(re.data);
+                },
+                error: function (m) {
+                    for (var p in m) {
+                        alert("error[" + p + "]=" + m[p]);
+                    }
+                    //alert("Error:"+m);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="searchListDiv" class="panel panel-info" style="width: 100%;">
+    <div class="panel-heading">
+        <h3 class="panel-title">添加个人客户</h3>
+    </div>
+</div>
+
+<div class="panel-body" id="searchList">
+    <form class="form-inline" role="form">
+        <table width="100%">
+            <tr>
+                <td width="15%">客户类型：</td>
+                <td width="32%">
+                    <!-- <input type="text" id="" class="form-control"> -->
+                    <select id="customerType" class="selectpicker form-control"></select>
+                </td>
+                <td width="15%">*CIF客户代码：</td>
+                <td width="25%">
+                    <input type="text" id="code" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td width="15%">中文姓名：</td>
+                <td width="25%">
+                    <input type="text" id="cnName" class="form-control">
+                </td>
+                <td width="15%">全名：</td>
+                <td width="25%">
+                    <input type="text" id="fullName" class="form-control">
+                </td>
+                <td width="20%" align="left">
+                    <button type="button" id="btn_query" class="btn btn-primary">查询</button>
+                    <button type="button" style="margin-left: 15px" id="btn_reset" class="btn btn-primary">重置</button>
+                </td>
+            </tr>
+            <tr>
+                <td width="15%">简称：</td>
+                <td width="25%">
+                    <input type="text" id="simpleName" class="form-control">
+                </td>
+                <td width="15%">*客户地址：</td>
+                <td width="25%">
+                    <input type="text" id="address" class="form-control">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<!-- <div
+    style="margin-left: 10px; margin-right: 10px; height: 360px; overflow: scroll"> -->
+<!--<button type="button" class="btn btn-primary" onclick="individClientAddButton()">保存</button>-->
+<!-- </div> -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">出错了</h4>
+            </div>
+            <div class="modal-body"><%i18n('ERROR.CODE.500');%></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+spring:
+  application:
+    name: bookstore-cloud-router
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://BSS1:9001/eureka/,http://BSS2:9002/eureka/
+
+server:
+  port: 7100
+zuul:
+  routes:
+     books:
+         #url: http://localhost:8002
+         path: /BSS/**
+         serviceId: bookstore-cloud-bookservice

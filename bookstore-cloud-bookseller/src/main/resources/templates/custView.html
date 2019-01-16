@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>客户信息列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<table>
+    <tr>
+        <td>客户代码</td>
+        <td>客户姓名</td>
+        <td>客户地址</td>
+        <td>联系电话</td>
+        <td>备注</td>
+    </tr>
+    <%
+    for(c in custlist){
+    %>
+    <tr>
+        <td>${c.custCde}</td>
+        <td>${c.custName}</td>
+        <td>${c.address}</td>
+        <td>${c.telephone}</td>
+        <td>${c.remark}</td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

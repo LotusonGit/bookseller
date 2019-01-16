@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Beetl_MetisMenu动态多级菜单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--引入bootstrap css-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"/>
+    <!--引入font css-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <!--引入metisMenu css-->
+    <link rel="stylesheet" href="http://mm.onokumus.com/metisMenu.css">
+    <link rel="stylesheet" href="http://mm.onokumus.com/css/mm-vertical.css">
+</head>
+<body>
+<p>Hello ${name}</p>
+<div class="container">
+    <div class="row">
+        <nav class="sidebar-nav">
+            <ul class="metismenu" id="menu1">
+                <li class="active"><a class="has-arrow" href="#"
+                                      aria-expanded="true">Menu 1</a>
+                    <ul aria-expanded="true" class="collapse in" style="">
+                        <li><a href="#" aria-expanded="false">item 1.1</a></li>
+                        <li><a href="#" aria-expanded="false">item 1.2</a></li>
+                        <li class="active"><a class="has-arrow" href="#"
+                                              aria-expanded="true">Menu 1.3</a>
+                            <ul aria-expanded="true" class="collapse in" style="">
+                                <li><a href="#">item 1.3.1</a></li>
+                                <li><a href="#">item 1.3.2</a></li>
+                                <li><a href="#">item 1.3.3</a></li>
+                                <li><a href="#">item 1.3.4</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" aria-expanded="false">item 1.4</a></li>
+                        <li><a class="has-arrow" href="#" aria-expanded="false">Menu
+                            1.5</a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="#">item 1.5.1</a></li>
+                                <li><a href="#">item 1.5.2</a></li>
+                                <li><a href="#">item 1.5.3</a></li>
+                                <li><a href="#">item 1.5.4</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+<!--引入jquery js-->
+<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+<!--引入bootstrap js-->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--引入metisMenu js-->
+<script src="http://mm.onokumus.com/metisMenu.js"></script>
+<script> // 此处一定记得初始化metisMenu $(function () { $('#menu1').metisMenu(); }); </script>
+</html>

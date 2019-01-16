@@ -1,0 +1,26 @@
+<% if(menuLvl==null || menuLvl==1){  %>
+<ul aria-expanded="false" class="collapse nav nav-second-level">
+    <% } else { %>
+    <ul aria-expanded="false" class="collapse nav nav-third-level">
+        <% } %>
+        <!--遍历子菜单树-->
+        <% for(childMenu in childMenus){ %>
+        <% if(childMenu.children == null || childMenu.children.~size == 0){ %>
+        <!--当前菜单的子菜单为空，直接显示当前菜单-->
+        <li>
+            <!-- a href="javascript:;" aria-expanded="false">${childMenu.menuName}</a -->
+            <a href="${childMenu.menuUrl}" aria-expanded="false" target="view_frame">${childMenu.menuName}</a>
+        </li>
+        <% } else { %>
+        <!--当前菜单的子菜单不为空-->
+        <li>
+            <!--先显示当前菜单-->
+            <a class="has-arrow" href="#" aria-expanded="false">${childMenu.menuName}
+                <span class="fa arrow">
+            </a>
+            <!--再继续递归本模板显示子菜单-->
+            <% layout("/menu/subMenu.html",{"childMenus":childMenu.children , "menuLvl":(menuLvl+1)}){} %>
+        </li>
+        <% } %>
+        <% } %>
+    </ul>

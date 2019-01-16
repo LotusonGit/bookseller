@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Beetl_MetisMenu动态多级菜单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--引入bootstrap css-->
+    <link rel="stylesheet"
+          href="/css/import-all.css"/>
+    <!--引入font css-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <!--引入metisMenu css-->
+    <link rel="stylesheet" href="/plugins/metisMenu/css/metisMenu.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <!--此处使用菜单模板动态显示后台设置的菜单内容-->
+        <% layout("/rootMenu.html",{"rootMenuList":menuTree}){} %>
+    </div>
+</div>
+</body>
+<!--引入jquery js-->
+<script src="/js/jquery-3.1.0.min.js"></script>
+<!--引入bootstrap js-->
+<script
+        src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--引入metisMenu js-->
+<script src="/plugins/metisMenu/js/metisMenu.js"></script>
+<script>
+    $(function () {
+        $('#menu1').metisMenu();
+    });
+
+</script>
+<strong>test message:${servlet.request.queryString}</strong>
+</html>

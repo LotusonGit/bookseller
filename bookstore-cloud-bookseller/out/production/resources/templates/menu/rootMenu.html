@@ -1,0 +1,25 @@
+<nav class="sidebar-nav" navbar-collapse>
+    <ul class="nav" id="side-menu">
+        <!--遍历菜单树-->
+        <% for(rootMenu in rootMenuList) { %>
+        <li>
+            <% if(rootMenu.children != null && rootMenu.children.~size > 0){ %>
+            <!-- a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-bar-chart-o fa-fw"></i>${rootMenu.menuName}<span class="fa arrow"></span></a -->
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <i class="fa ${rootMenu.menuIcon} fa-fw"></i>
+                ${rootMenu.menuName}
+                <span class="fa arrow"></span>
+            </a>
+            <!--当前菜单的子菜单不为空-->
+            <!--使用子菜单模板显示子菜单-->
+            <% layout("/menu/subMenu.html",{"childMenus":rootMenu.children,"menuLvl":1}){} %>
+            <% } else {%>
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <i class="fa ${rootMenu.menuIcon} fa-fw"></i>
+                ${rootMenu.menuName}</span>
+            </a>
+            <%}%>
+        </li>
+        <% } %>
+    </ul>
+</nav>

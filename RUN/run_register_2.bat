@@ -1,0 +1,1 @@
+java -jar bookservice-registrationcenter-0.0.1-SNAPSHOT.jar --spring.profiles.active=BSS2

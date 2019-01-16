@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=10"/>
+    <title>input loans deal</title>
+    <link href="${ctxPath}/css/import-all.css" rel="stylesheet" type="text/css"/>
+    <%include("/inc/alljs.html"){}%>
+    <script type="text/javascript">
+        $(function () {
+            $('#list').bootstrapTable({
+                cache: false,
+                method: "get",
+                striped: true,//是否显示行间隔色
+                pagination: true,
+                sidePagination: "client",
+                minimumCountColumns: 2,
+                pageNumber: 1, //初始化加载第一页，默认第一页
+                pageSize: 10,//每页的记录行数（*）
+                pageList: [5, 10], //可供选择的每页的行数（*）
+                sortable: true,//是否启用排序
+                ////sortOrder : "desc", //排序方式、
+                sortName: "custCde",//指定默认排序列
+                uniqueId: "id1",//每一行的唯一标识，一般为主键列
+                exportDataType: 'all',
+                url: '/book/list',
+                columns: [{field: 'bookId', title: '图书ID', sortable: true}, {
+                    field: 'bookName',
+                    title: '图书名称',
+                    sortable: true
+                },
+                    {field: 'author', title: '图书作者', sortable: true}, {
+                        field: 'price',
+                        title: '图书价格',
+                        sortable: true
+                    }],
+                onDblClickRow: function (row) {
+                    var url = "/bookstore/view/" + row.bookId;
+                    alert("url=" + url);
+
+                    window.location.href = url;
+                },
+                queryParams: function (params) {
+                    params["code"] = $("#code").val();
+                    params["address"] = $("#address").val();
+                    var $sample = {a: 123, b: 345, desc: 'A sample object'};
+                    params["jsobj"] = JSON.stringify($sample);
+                    return params;
+                },
+                rowStyle: function (row, index) {
+                    var bdClass = '';
+                    if (index % 2 == 0) {
+                        bdClass = 'info';
+                    }
+                    return {classes: bdClass};
+                },
+                onLoadError: function (status) {
+                    if (status == 500) {
+                        $('#myModal').modal();
+                    }
+                }
+
+            });
+            $("#btn_query").click(function () {
+                //var _code = $("#code").val();
+                //var _address = $("#address").val();
+                $('#list').bootstrapTable('refresh', {});//{query:{code:_code,address:_address}});
+            });
+            //重置
+            $('#btn_reset').click(function () {
+                /* $("#CUST_CERT_CAT").ligerGetComboBoxManager().selectValue(""); */
+                /* $("#CUST_CIF_CODE").val("");
+                $("#CUST_CIF_NAME").val(""); */
+            });
+            //客户类型下拉框
+
+            $("#customerType").selectpicker({
+                noneSelectedText: '<%i18n("droplist.default");%>'
+            });
+            //客户类型下拉数据加载
+            var custTypeDataArr = [{"text": '', 'value': ''}, {
+                "text": '工业技术',
+                'value': 'individualClient'
+            }, {"text": '政治经济', 'value': 'institutionClient'}];
+            setSelectData('customerType', custTypeDataArr);
+            $("#customerType").change(function () {
+                $("#customerType option:selected").each(function () {
+                });
+            });
+        });
+
+        function displaySearchList() {
+            if ($("#searchList").css("display") == "none") {
+                $("#searchList").css("display", "");
+                $("#searchListButton").text("-");
+            } else {
+                $("#searchList").css("display", "none");
+                $("#searchListButton").text("+");
+            }
+        }
+
+        function individClientAddButton() {
+            var url = '/cif/create';
+            alert(url);
+            window.location.href = url;
+        }
+
+        function individClientModButton() {
+            $.ajax({
+                url: '/cif/client',
+                method: 'put',
+                data: {custOid: 100000},
+                async: false,
+                dataType: 'json',
+                success: function (rMsg) {
+                    if (typeof(rMsg) == "string") {
+                        var re = $.parseJSON(rMsg);
+                    } else {
+                        var re = rMsg;
+                    }
+                    alert(re.data);
+                },
+                error: function (m) {
+                    for (var p in m) {
+                        alert("error[" + p + "]=" + m[p]);
+                    }
+                    //alert("Error:"+m);
+                }
+            });
+        }
+
+        function individClientGetButton() {
+            $.ajax({
+                url: '/cif/client',
+                method: 'get',
+                data: {custOid: 100000},
+                async: false,
+                dataType: 'json',
+                success: function (rMsg) {
+                    if (typeof(rMsg) == "string") {
+                        var re = $.parseJSON(rMsg);
+                    } else {
+                        var re = rMsg;
+                    }
+                    alert(re.data);
+                },
+                error: function (m) {
+                    for (var p in m) {
+                        alert("error[" + p + "]=" + m[p]);
+                    }
+                    //alert("Error:"+m);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="searchListDiv" class="panel panel-info" style="width: 100%;">
+    <div class="panel-heading">
+        <h3 class="panel-title">图书查询</h3>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>查询条件</b><b style="float: right; cursor: pointer" id="searchListButton" onclick="displaySearchList()">+</b>
+    </div>
+</div>
+<div class="panel-body" id="searchList">
+    <form class="form-inline" role="form">
+        <table width="100%">
+            <tr>
+                <td width="15%">图书类型：</td>
+                <td width="32%">
+                    <!-- <input type="text" id="" class="form-control"> -->
+                    <select id="customerType" class="selectpicker form-control"></select>
+                </td>
+                <td width="15%">图书名称：</td>
+                <td width="25%">
+                    <input type="text" id="code" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td width="15%">图书条码：</td>
+                <td width="25%">
+                    <input type="text" id="" class="form-control">
+                </td>
+                <td width="15%">作&nbsp;&nbsp;者：</td>
+                <td width="25%">
+                    <input type="text" id="" class="form-control">
+                </td>
+                <td width="20%" align="left">
+                    <button type="button" id="btn_query" class="btn btn-primary">查询</button>
+                    <button type="button" style="margin-left: 15px" id="btn_reset" class="btn btn-primary">重置</button>
+                </td>
+            </tr>
+           </table>
+    </form>
+</div>
+<!-- <div
+    style="margin-left: 10px; margin-right: 10px; height: 360px; overflow: scroll"> -->
+
+<table class="table text-nowrap" id="list"></table>
+<!-- </div> -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">出错了</h4>
+            </div>
+            <div class="modal-body"><%i18n('ERROR.CODE.500');%></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+</body>
+</html>

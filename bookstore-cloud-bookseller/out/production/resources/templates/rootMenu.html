@@ -1,0 +1,15 @@
+<nav class="sidebar-nav">
+    <ul class="metismenu" id="menu1">
+        <!--�����˵���-->
+        <% for(rootMenu in rootMenuList) { %>
+        <li>
+            <a class="has-arrow" href="#" aria-expanded="false">${rootMenu.name}</a>
+            <% if(rootMenu.children != null && rootMenu.children.~size > 0){ %>
+            <!--��ǰ�˵����Ӳ˵���Ϊ��-->
+            <!--ʹ���Ӳ˵�ģ����ʾ�Ӳ˵�-->
+            <% layout("/subMenu.html",{"childMenus":rootMenu.children}){} %>
+            <% } %>
+        </li>
+        <% } %>
+    </ul>
+</nav>

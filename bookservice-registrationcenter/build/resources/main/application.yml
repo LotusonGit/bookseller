@@ -1,0 +1,25 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: bookservice-register
+  profiles: BSS1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://BSS2:9002/eureka/
+
+---
+
+server:
+  port: 9002
+
+spring:
+  application:
+    name: bookservice-register
+  profiles: BSS2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://BSS1:9001/eureka/

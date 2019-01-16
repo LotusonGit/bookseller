@@ -1,0 +1,1 @@
+java -jar bookstore-cloud-bookservice-0.0.1-SNAPSHOT.jar --server.port=8002

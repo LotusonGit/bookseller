@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.excel.bookstore.dao.mapper.CustDao">
+
+
+    <select id="getCustById" parameterType="java.lang.Long" resultType="com.excel.bookstore.model.CustInfo">
+        SELECT * FROM customer WHERE CUST_OID = #{id}
+    </select>
+
+</mapper>

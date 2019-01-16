@@ -1,0 +1,15 @@
+<ul aria-expanded="false" class="collapse">
+    <!--�����Ӳ˵���-->
+    <% for(childMenu in childMenus){ %>
+    <% if(childMenu.children == null || childMenu.children.~size == 0){ %>
+    <!--��ǰ�˵����Ӳ˵�Ϊ�գ�ֱ����ʾ��ǰ�˵�-->
+    <li><a href="javascript:;" aria-expanded="false">${childMenu.name}</a></li>
+    <% } else { %>
+    <!--��ǰ�˵����Ӳ˵���Ϊ��-->
+    <li> <!--����ʾ��ǰ�˵�--> <a class="has-arrow" href="#" aria-expanded="false">${childMenu.name}</a>
+        <!--�ټ����ݹ鱾ģ����ʾ�Ӳ˵�-->
+        <% layout("/subMenu.html",{"childMenus":childMenu.children}){} %>
+    </li>
+    <% } %>
+    <% } %>
+</ul>

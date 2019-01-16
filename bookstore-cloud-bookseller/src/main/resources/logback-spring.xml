@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 默认为 <configuration scan="true" scanPeriod="60 seconds" debug="false"> -->
+<!-- scan 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true -->
+<!-- scanPeriod 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟 -->
+<!-- debug 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false -->
+<configuration>
+    <!-- appender是指输出的形式或位置，name和class是两个必备属性 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder负责两件事，一是把日志信息转换成字节数组，二是把字节数组写入到输出流。 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread]-%class:%line>>%msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="BSSlogfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 滚动策略。具体策略由class指定。 -->
+        <!-- TimeBasedRollingPolicy是最常用的滚动策略，根据时间滚动，当达到一定时间时，自动重新开辟一个日志文件 -->
+        <!-- FixedWindowRollingPolicy根据固定窗口算法重命名文件的滚动策略 -->
+        <!-- triggeringPolicy根据当前活动文件大小来决定是否滚动的策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 由于表达式中最小单位为天，所以每天生成一个日志文件，且以此命名 -->
+            <fileNamePattern>G:/server/log/bookstore/bookstore_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 保留归档文件的最大数量。 -->
+            <!-- 本例中由于使用了时间作为滚动策略，且fileNamePattern中最小单位为天，所以归档文件保存30天，超过30天将被删除 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd-HH:mm:ss.SSS} %level [%thread]-%class:%line>>%msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+
+    <!-- logger是用于输出的对象，java文件中getLogger("app")即获得的该name=app的logger -->
+    <!-- logger的name属性可指定为包名或类名。app是app.*的父亲，所有没有声明level的app.*都将继承app的level -->
+    <!-- addtivity属性表明是否向上级logger传递打印信息，即上级logger又重新打了一遍。默认为true -->
+    <logger name="com.excel.bookstore.web" level="debug" addtivity="false">
+        <appender-ref ref="BSSlogfile"/>
+    </logger>
+    <!-- 根logger，level表示输出的level级别，从下到上为：TRACE, DEBUG, INFO, WARN, ERROR, ALL
+        和 OFF，低于这里设定级别的不显示 -->
+    <root level="WARN">
+        <!-- 表示该appender被引入到该logger中，一个logger可含多个appender，即多个输出位置或形式 -->
+        <!-- ref引用的是appender的name -->
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>  
