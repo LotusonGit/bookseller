@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bookseller.iml" filepath="$PROJECT_DIR$/bookseller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookseller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookseller_main.iml" group="bookseller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookseller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookseller_test.iml" group="bookseller" />
+      <module fileurl="file://$PROJECT_DIR$/bookservice-registrationcenter/bookservice-registrationcenter.iml" filepath="$PROJECT_DIR$/bookservice-registrationcenter/bookservice-registrationcenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookservice-registrationcenter_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookservice-registrationcenter_main.iml" group="bookservice-registrationcenter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookservice-registrationcenter_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookservice-registrationcenter_test.iml" group="bookservice-registrationcenter" />
+      <module fileurl="file://$PROJECT_DIR$/bookstore-cloud-bookseller/bookstore-cloud-bookseller.iml" filepath="$PROJECT_DIR$/bookstore-cloud-bookseller/bookstore-cloud-bookseller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookseller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookseller_main.iml" group="bookstore-cloud-bookseller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookseller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookseller_test.iml" group="bookstore-cloud-bookseller" />
+      <module fileurl="file://$PROJECT_DIR$/bookstore-cloud-bookservice/bookstore-cloud-bookservice.iml" filepath="$PROJECT_DIR$/bookstore-cloud-bookservice/bookstore-cloud-bookservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookservice_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookservice_main.iml" group="bookstore-cloud-bookservice" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookservice_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-bookservice_test.iml" group="bookstore-cloud-bookservice" />
+      <module fileurl="file://$PROJECT_DIR$/bookstore-cloud-feign/bookstore-cloud-feign.iml" filepath="$PROJECT_DIR$/bookstore-cloud-feign/bookstore-cloud-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-feign_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-feign_main.iml" group="bookstore-cloud-feign" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-feign_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-feign_test.iml" group="bookstore-cloud-feign" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice_main.iml" group="bookstore-cloud-orderservice" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-orderservice_test.iml" group="bookstore-cloud-orderservice" />
+      <module fileurl="file://$PROJECT_DIR$/bookstore-cloud-route/bookstore-cloud-route.iml" filepath="$PROJECT_DIR$/bookstore-cloud-route/bookstore-cloud-route.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-route_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-route_main.iml" group="bookstore-cloud-route" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bookstore-cloud-route_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bookstore-cloud-route_test.iml" group="bookstore-cloud-route" />
+    </modules>
+  </component>
+</project>

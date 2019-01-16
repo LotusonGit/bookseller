@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="bookseller_main" target="1.8" />
+      <module name="bookseller_test" target="1.8" />
+      <module name="bookservice-registrationcenter_main" target="1.8" />
+      <module name="bookservice-registrationcenter_test" target="1.8" />
+      <module name="bookstore-cloud-bookseller_main" target="1.8" />
+      <module name="bookstore-cloud-bookseller_test" target="1.8" />
+      <module name="bookstore-cloud-bookservice_main" target="1.8" />
+      <module name="bookstore-cloud-bookservice_test" target="1.8" />
+      <module name="bookstore-cloud-feign_main" target="1.8" />
+      <module name="bookstore-cloud-feign_test" target="1.8" />
+      <module name="bookstore-cloud-orderservice_main" target="1.8" />
+      <module name="bookstore-cloud-orderservice_test" target="1.8" />
+      <module name="bookstore-cloud-route_main" target="1.8" />
+      <module name="bookstore-cloud-route_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
