@@ -4,6 +4,12 @@ spring:
   application:
     name: bookstore-cloud-bookservice
 
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.excel.bookstore.model
+  configuration:
+    map-underscore-to-camel-case: true
+
 eureka:
   instance:
     hostname: localhost
